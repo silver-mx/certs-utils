@@ -15,7 +15,7 @@ cd kafka-certs
 ### Java-Spring HTTPS/TLS
 
 Creates a certificate authority (CA) and the keystore for the server.
-Call it as `./create-all-certs.sh [commonName] [password] [outputDir] [encryptedCA(true/false)]`
+Call it as `./create-all-certs.sh [commonName/alias] [password] [outputDir] [encryptedCA(true/false)]`
 
 ```bash
 cd spring-certs

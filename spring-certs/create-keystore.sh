@@ -36,7 +36,7 @@ echo "------------------------------- START GENERATING KEYSTORE $NAME [$KEYSTORE
   -out "$KEYSTORE_DIR/$NAME.csr" \
   -config "$KEYSTORE_DIR/$NAME.cnf"
 
-  # Sign the broker certificate with the CA
+  # Sign the server certificate with the CA
   # NOTE: -passin pass:"$PASSWORD" provides the CA encryption password (if the CA is encrypted)
   openssl x509 -req \
   -sha512 \
@@ -50,7 +50,7 @@ echo "------------------------------- START GENERATING KEYSTORE $NAME [$KEYSTORE
   -extensions v3_req \
   -passin pass:"$PASSWORD"
 
-  # .Convert the broker certificate over to pkcs12 format
+  # Convert the server certificate over to pkcs12 format
   openssl pkcs12 -export \
   -in "$KEYSTORE_DIR/$NAME.crt" \
   -inkey "$KEYSTORE_DIR/$NAME.key" \
@@ -61,8 +61,9 @@ echo "------------------------------- START GENERATING KEYSTORE $NAME [$KEYSTORE
   -password pass:"$PASSWORD" \
   -passin pass:"$PASSWORD"
 
-  # Create a keystore for the broker and import the certificate
+  # Create a keystore for the server and import the certificate
   keytool -importkeystore \
+  -alias "$NAME" \
   -deststorepass "$PASSWORD" \
   -destkeystore "$KEYSTORE" \
   -srckeystore "$KEYSTORE_DIR/$NAME.p12" \
