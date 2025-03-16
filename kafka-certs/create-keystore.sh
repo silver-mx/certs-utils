@@ -69,6 +69,7 @@ do
 
     # Create a keystore for the broker and import the certificate
     keytool -importkeystore \
+    -alias "$NAME" \
     -deststorepass "$PASSWORD" \
     -destkeystore "$KEYSTORE" \
     -srckeystore "$KEYSTORE_DIR/$NAME.p12" \
