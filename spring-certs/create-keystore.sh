@@ -30,6 +30,7 @@ echo "------------------------------- START GENERATING KEYSTORE $NAME [$KEYSTORE
   # NOTE: No password is asked because of '-noenc'
   openssl req -new \
   -newkey rsa:4096 \
+  -days 3650 \
   -sha512 \
   -noenc \
   -keyout "$KEYSTORE_DIR/$NAME.key" \

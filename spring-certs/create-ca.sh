@@ -24,6 +24,7 @@ then
   # For testing we only use the received password
   openssl req -x509 \
    -aes256 \
+   -days 3650 \
    -config "$CA_OUTPUT_DIR/ca.cnf" \
    -passout pass:"$ENCRYPTION_PASSWORD" \
    -newkey rsa:4096 \
@@ -35,6 +36,7 @@ else
   # NOTE: No password is asked because of '-noenc'
   openssl req -x509 \
    -noenc \
+   -days 3650 \
    -config "$CA_OUTPUT_DIR/ca.cnf" \
    -newkey rsa:4096 \
    -sha512 \
